@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<!--
+ma prems page
+-->
+<html>
+    <head>
+        <title>Canvas controllers - NANI Isabelle</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Isabelle NANI - Vous trouverez ici le site web présentant mes compétences HTML, CSS, Suite office  ">
+        <meta name="keywords" content="HTML,CSS,JQuery, Javascript, Canvas, Game controllers, Formation informatique">
+        <meta name="author" content="NANI Isabelle">
+        <style>
+            canvas {
+                border: 1px solid steelblue;
+                background-color: lightsteelblue;
+                /* CENTER CANVAS */  
+                display : block;
+                margin : auto auto;
+            }
+            #joystick{
+                width: 9%; 
+                margin: .3em auto;
+            }
+        </style>
+    </head>
+    <body onload="startGame()">
+        <script>
+
+            var myGamePiece;                                                     //var composant 
+
+            function startGame() {
+                myGamePiece = new component(30, 30, "red", 10, 120);            // mise en forme composant
+                myGameArea.start();
+            }
+
+            var myGameArea = {
+                canvas: document.createElement("canvas"),
+                start: function () {
+                    this.canvas.width = 800;
+                    this.canvas.height = 600;
+                    this.context = this.canvas.getContext("2d");
+                    document.body.insertBefore(this.canvas, document.body.childNodes[0]);
+                    this.interval = setInterval(updateGameArea, 100);               // mouvement rapide :20 ; lent : 200
+                },
+                clear: function () {
+                    this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
+                }
+            }
+
+            function component(width, height, color, x, y) {
+                this.width = width;
+                this.height = height;
+                this.speedX = 0;                                                // vitesse 
+                this.speedY = 0;
+                this.x = x;
+                this.y = y;
+                //
+                this.update = function () {
+                    ctx = myGameArea.context;
+                    ctx.fillStyle = color;
+                    ctx.fillRect(this.x, this.y, this.width, this.height);
+                }
+                //
+                this.newPos = function () {
+                    this.x += this.speedX;
+                    this.y += this.speedY;
+                }
+            }
+
+            function updateGameArea() {
+                myGameArea.clear();
+                myGamePiece.newPos();
+                myGamePiece.update();
+            }
+
+            function moveup() {
+                myGamePiece.speedY -= 1;
+            }
+
+            function movedown() {
+                myGamePiece.speedY += 1;
+            }
+
+            function moveleft() {
+                myGamePiece.speedX -= 1;
+            }
+
+            function moveright() {
+                myGamePiece.speedX += 1;
+            }
+
+
+
+        </script>
+
+        <div id="joystick">
+            <svg width="100%" height="100%" viewBox="0 0 100 100">
+            <defs>
+            <linearGradient id="grad1" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" style="stop-color:rgb(16,16,16);stop-opacity:1" />
+            <stop offset="100%" style="stop-color:rgb(240,240,240);stop-opacity:1" />
+            </linearGradient>
+            <linearGradient id="grad2" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" style="stop-color:rgb(240,240,240);stop-opacity:1" />
+            <stop offset="100%" style="stop-color:rgb(16,16,16);stop-opacity:1" />
+            </linearGradient>
+            <linearGradient id="grad3" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" style="stop-color:rgb(168,168,168);stop-opacity:1" />
+            <stop offset="100%" style="stop-color:rgb(239,239,239);stop-opacity:1" />
+            </linearGradient>
+            </defs>
+            <circle cx="50" cy="50" r="50" fill="url(#grad1)" />
+            <circle cx="50" cy="50" r="47" fill="url(#grad2)" stroke="black" stroke-width="1.5px" />
+            <circle cx="50" cy="50" r="44" fill="url(#grad3)" />
+            <circle cx="50" cy="50" r="20" fill="#cccccc" stroke="black" stroke-width="1px" onclick="alert('PRESS CTRL+ F5 to restart');" />
+            <path d="M50,14 54,22 46,22Z" fill="rgba(0,0,0,0.8)" onclick="moveup();" />
+            <path d="M50,86 54,78 46,78Z" fill="rgba(0,0,0,0.8)" onclick="movedown();" />
+            <path d="M14,50 22,54 22,46Z" fill="rgba(0,0,0,0.8)" onclick="moveleft();" />
+            <path d="M86,50 78,54 78,46Z" fill="rgba(0,0,0,0.8)" onclick="moveright();" />
+            </svg>
+        </div>
+        <footer><a href="canvas.html">Références et sources</a></footer>
+    </body>
+</html>

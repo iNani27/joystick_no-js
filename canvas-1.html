@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<!--
+ma prems page
+-->
+<html>
+    <head>
+        <title>Canvas as game area - NANI Isabelle</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Isabelle NANI - Vous trouverez ici le site web présentant mes compétences HTML, CSS, Suite office  ">
+        <meta name="keywords" content="HTML,CSS,JQuery, Javascript, Canvas, Game controllers, Formation informatique">
+        <meta name="author" content="NANI Isabelle">
+        <style>
+            canvas {
+                border: 1px solid steelblue;
+                background-color: lightsteelblue;
+                /* CENTER CANVAS
+                canvas is an inline element but 
+                text-align: center; 
+                do not work 
+                then use display block, margin auto 
+                */  
+                display : block;
+                margin : auto auto;
+
+            }
+        </style>
+    </head>
+    <!-- 
+    Creation of an empty game area with html elemnt canvas
+    HTML <canvas> element is displayed as a rectangular object on a web page
+    -->
+    <body onload="startGame()">
+        <!-- 
+        JavaScript to draw, write, insert images
+        The <canvas> HTML element has a built-in object, 
+        called the getContext("2d") object, 
+        with methods and properties for drawing.
+        -->
+        <script>
+            function startGame() {
+                myGameArea.start();
+            }
+
+            var myGameArea = {
+                canvas: document.createElement("canvas"),
+                start: function () {
+                    this.canvas.width = 800;
+                    this.canvas.height = 600;
+                    this.context = this.canvas.getContext("2d");
+                    document.body.insertBefore(this.canvas, document.body.childNodes[0]);
+                }
+            }
+        </script> 
+    </body>
+</html>
