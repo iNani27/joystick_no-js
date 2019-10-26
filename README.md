@@ -14,9 +14,13 @@ REad more on : https://sway.office.com/ZqFDiCd5rHoFYmLB?ref=Link
  See result on https://inani27.github.io/joystick_no-js/
 
 
+
+
 #Piste 2
 CANVAS : HTML and JavaScript
 
 Tuto GAME CONTROLLERS on https://www.w3schools.com/graphics/game_controllers.asp
 
 See result on https://inani27.github.io/joystick_no-js/canvas.html
+
+
