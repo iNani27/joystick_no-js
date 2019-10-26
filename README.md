@@ -9,6 +9,14 @@ SVG solution thanks to https://stackoverflow.com/users/3695983/alvaro-montoro
 
 REad more on : https://sway.office.com/ZqFDiCd5rHoFYmLB?ref=Link
 
- => à suivre
+... => à suivre
 
-See result on https://inani27.github.io/joystick_no-js/
+ See result on https://inani27.github.io/joystick_no-js/
+
+
+#Piste 2
+CANVAS : HTML and JavaScript
+
+Tuto GAME CONTROLLERS on https://www.w3schools.com/graphics/game_controllers.asp
+
+See result on https://inani27.github.io/joystick_no-js/canvas.html
